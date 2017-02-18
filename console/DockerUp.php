@@ -7,6 +7,7 @@ use PDO;
 use October\Rain\Config\ConfigWriter;
 use Illuminate\Console\Command;
 use System\Classes\UpdateManager;
+use System\Models\Parameter;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Input\InputArgument;
 
@@ -68,14 +69,20 @@ class DockerUp extends Command
           $this->writeToConfig('database', ['default' => 'sqlite']);
           $this->output->writeln('<info>Database added...</info>');
 
-          // Run october:up
-          $manager = UpdateManager::instance()->resetNotes()->update();
+          $this->call('october:up');
 
-          $this->output->writeln('<info>Migrating application and plugins...</info>');
+          if ( getenv('OCTOBERCMS_CORE_HASH') && getenv('OCTOBERCMS_CORE_BUILD') )
+          {
+              $this->output->writeln('<info>Setting system core parameters...</info>');
+              $this->output->writeln(' - build: <info>' . getenv('OCTOBERCMS_CORE_BUILD') . '</info>');
+              $this->output->writeln(' - hash: <info>' . getenv('OCTOBERCMS_CORE_HASH') . '</info>');
 
-          foreach ($manager->getNotes() as $note) {
-              $this->output->writeln($note);
+              Parameter::set([
+                  'system::core.build' => getenv('OCTOBERCMS_CORE_BUILD'),
+                  'system::core.hash'  => getenv('OCTOBERCMS_CORE_HASH')
+              ]);
           }
+
         }
     }
 
