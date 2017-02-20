@@ -6,7 +6,6 @@ use File;
 use PDO;
 use October\Rain\Config\ConfigWriter;
 use Illuminate\Console\Command;
-use System\Classes\UpdateManager;
 use System\Models\Parameter;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Input\InputArgument;
@@ -71,9 +70,12 @@ class DockerUp extends Command
 
           $this->call('october:up');
 
+          $this->output->writeln('<info>Disabled core updates</info>');
+          $this->writeToConfig('cms', ['disableCoreUpdates' => 'true']);
+
           if ( getenv('OCTOBERCMS_CORE_HASH') && getenv('OCTOBERCMS_CORE_BUILD') )
           {
-              $this->output->writeln('<info>Setting system core parameters...</info>');
+              $this->output->writeln('<info>Setting system core parameters</info>');
               $this->output->writeln(' - build: <info>' . getenv('OCTOBERCMS_CORE_BUILD') . '</info>');
               $this->output->writeln(' - hash: <info>' . getenv('OCTOBERCMS_CORE_HASH') . '</info>');
 

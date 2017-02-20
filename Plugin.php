@@ -19,7 +19,7 @@ class Plugin extends PluginBase
             'name'        => 'Docker Utilties',
             'description' => 'Docker utilities for OctoberCMS',
             'author'      => 'Aspen Digital',
-            'homepage'    => 'http://www.aspendigital.com'
+            'homepage'    => 'https://github.com/aspendigital/october-docker'
         ];
     }
 

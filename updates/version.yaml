@@ -2,3 +2,4 @@
 1.0.2:
     - Set system core parameters from environment variables
     - Call `october:up` instead of using duplicate logic
+1.0.3: Disable core updates on docker:up
