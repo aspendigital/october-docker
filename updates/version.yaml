@@ -3,3 +3,6 @@
     - Set system core parameters from environment variables
     - Call `october:up` instead of using duplicate logic
 1.0.3: Disable core updates on docker:up
+1.0.4:
+    - Introduce docker:info and docker:edge console commands
+    - Add docker:up --edge option

@@ -26,6 +26,8 @@ class Plugin extends PluginBase
     public function register()
     {
         $this->registerConsoleCommand('docker:up', 'AspenDigital\Docker\Console\DockerUp');
+        $this->registerConsoleCommand('docker:edge', 'AspenDigital\Docker\Console\DockerEdge');
+        $this->registerConsoleCommand('docker:info', 'AspenDigital\Docker\Console\DockerInfo');
     }
 
 }
