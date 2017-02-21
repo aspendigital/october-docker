@@ -70,8 +70,20 @@ class DockerUp extends Command
 
           $this->call('october:up');
 
-          $this->output->writeln('<info>Disabled core updates</info>');
-          $this->writeToConfig('cms', ['disableCoreUpdates' => 'true']);
+          if ($this->option('edge')) {
+              $this->output->writeln('<info>Enabled core/edge updates</info>');
+              $this->writeToConfig('cms', [
+                'disableCoreUpdates' => false,
+                'edgeUpdates' => true
+              ]);
+          }
+          else {
+              $this->output->writeln('<info>Disabled core updates</info>');
+              $this->writeToConfig('cms', [
+                'disableCoreUpdates' => true,
+                'edgeUpdates' => false
+              ]);
+          }
 
           if ( getenv('OCTOBERCMS_CORE_HASH') && getenv('OCTOBERCMS_CORE_BUILD') )
           {
@@ -86,6 +98,16 @@ class DockerUp extends Command
           }
 
         }
+    }
+
+    /**
+     * Get the console command options.
+     */
+    protected function getOptions()
+    {
+        return [
+            ['edge', null, InputOption::VALUE_NONE, 'Enable edge updates']
+        ];
     }
 
     protected function writeToConfig($file, $values)
