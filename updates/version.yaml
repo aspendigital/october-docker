@@ -6,3 +6,4 @@
 1.0.4:
     - Introduce docker:info and docker:edge console commands
     - Add docker:up --edge option
+1.0.5: Simplify docker:up. Moved database setup to Dockerfile
