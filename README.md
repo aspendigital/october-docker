@@ -3,10 +3,13 @@
 ## AspenDigital.Docker
 An October CMS plugin for Docker support.
 
+__Note:__ This plugin is __no longer__ installed as a part of the [aspendigital/octobercms](https://github.com/aspendigital/docker-octobercms) Docker image build.
+
 
 ## Background
 
-The [aspendigital/octobercms](https://github.com/aspendigital/docker-octobercms) Docker image contains [October CMS](https://octobercms.com) along with all it's dependencies. This plugin is introduced via the image's [Dockerfile](https://github.com/aspendigital/docker-octobercms/blob/dda4544e6e232d3a43e873b6db54a73c95755b60/Dockerfile.template#L50) primarily to set the system build parameters.
+The [aspendigital/octobercms](https://github.com/aspendigital/docker-octobercms) Docker image contains [October CMS](https://octobercms.com) along with all it's dependencies. This plugin features console commands to help manage October CMS installed in the container.  
+
 
 #### Learn more
 
@@ -19,7 +22,7 @@ A summary of the console commands introduced by this plugin.
 
 ### docker:up
 
-The `docker:up` console command is used to set the system build parameters for our base Docker image [aspendigital/octobercms](https://hub.docker.com/r/aspendigital/octobercms/). It is run as a part of our [Docker image build process](https://github.com/aspendigital/docker-octobercms/blob/dda4544e6e232d3a43e873b6db54a73c95755b60/Dockerfile.template#L50).
+The `docker:up` console command is used to set the system build parameters for our base Docker image [aspendigital/octobercms](https://hub.docker.com/r/aspendigital/octobercms/).
 
 ---
 
